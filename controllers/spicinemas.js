@@ -9,7 +9,8 @@ module.exports = {
         axios.get(url).then((response) => {
             const movies = response.data.movies;
             result = _.find(movies, function (movie) {
-                return movie.name.includes(req_movie);
+                let name = movie.name.toLowerCase();
+                return name.includes(req_movie.toLowerCase());
             });
             status = result ? true:false;
             res.json({status:status});
